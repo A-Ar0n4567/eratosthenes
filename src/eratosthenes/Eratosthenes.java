@@ -5,7 +5,7 @@
  */
 
 package eratosthenes;
-
+import java.util.ArrayList;
 /**
  *
  * @author aamir7110
@@ -17,17 +17,38 @@ public class Eratosthenes {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        boolean numbers[] = new boolean[1000];
-        int num[] = new int[1000];
+        ArrayList<Integer> prime = new ArrayList();
+        ArrayList<Integer> num = new ArrayList();
         
-        for(int i = 2; i<numbers.length; i++){
+        int test=0;
+        int u = 2;
         
-            num[i] = i;
-            System.out.println(num[i]);
-            
+        for(int k = 0; k<=1000; k++){
+        
+            prime.add(k);
+            num.add(k);
         }
         
+        do{
         
+            for(int i = 0; i<500; i++){
+
+                test = num.get(u)*(num.get(u)+i);
+                
+                if(prime.contains(test)){
+                    prime.remove(prime.indexOf(test));
+                    num.remove(num.indexOf(test));
+                }
+                if(test > 1000){
+                   break;
+                }
+                
+            }   
+            
+            u++;
+            
+        }while(num.get(u) < 500);
+        System.out.println(prime);
+        }
     }
-    
-}
+
